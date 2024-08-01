@@ -9,15 +9,19 @@ pass.addEventListener("input", () => {
     msg.style.display = "none";
   }
 
-  if (pass.value.length < 4) {
+  if (/^\d+$/.test(pass.value)) {
     str.innerHTML = "weak";
     pass.style.borderColor = "#ff5925";
     msg.style.color = "#ff5925";
-  } else if (pass.value.length >= 4 && pass.value.length < 8) {
+  } else if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/.test(pass.value)) {
     str.innerHTML = "medium";
     pass.style.borderColor = "yellow";
     msg.style.color = "yellow";
-  } else if (pass.value.length >= 8) {
+  } else if (
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]+$/.test(
+      pass.value
+    )
+  ) {
     str.innerHTML = "strong";
     pass.style.borderColor = "#26d730";
     msg.style.color = "#26d730";
