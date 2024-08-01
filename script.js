@@ -9,11 +9,17 @@ pass.addEventListener("input", () => {
     msg.style.display = "none";
   }
 
-  if (/^\d+$/.test(pass.value)) {
+  if (
+    /^\d+$/.test(pass.value) ||
+    /^[A-Za-z\d]+$/.test(pass.value) ||
+    /^[!@#$%^&*(),.?":{}|<>]+$/.test(pass.value)
+  ) {
     str.innerHTML = "weak";
     pass.style.borderColor = "#ff5925";
     msg.style.color = "#ff5925";
-  } else if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/.test(pass.value)) {
+  }
+  //medium conditions need to fixed
+  else if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/.test(pass.value)) {
     str.innerHTML = "medium";
     pass.style.borderColor = "yellow";
     msg.style.color = "yellow";
